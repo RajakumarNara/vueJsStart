@@ -6,6 +6,34 @@
         </title>
     </head>
     <body>
-        Hi
+        <div id="my-app">
+            <h1>{{vish}} {{name}}</h1>
+            <h1 v-text="sirName">Raj</h1>
+            <h1 v-html="sirName">1234</h1>
+        <hr/>
+        <div v-once>
+            <h1>{{name}}</h1>
+            <h1 v-text="name"></h1>
+            <h1 v-once>{{name}}</h1>
+            <h1 v-text="name" v-once>Hi Raj</h1>
+            <h1 v-bind:id="myId">Hi Raj</h1>
+            <div v-bind:style="{color:hightLightColor}">Inline</div>
+        </div>
+
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+    var vm=new Vue({
+        el:'#my-app',
+        data:{
+            name:"Viswash",
+            vish:"Hello",
+            sirName:"<i>Nara</i >",
+            myId:"dataId",
+            hightLightColor:"Orange",
+            headerSize:50
+        }
+    });
+    </script>
     </body>
 </html>
