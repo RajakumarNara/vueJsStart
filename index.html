@@ -17,7 +17,7 @@
             <h1 v-once>{{name}}</h1>
             <h1 v-text="name" v-once>Hi Raj</h1>
             <h1 v-bind:id="myId">Hi Raj</h1>
-            <div v-bind:style="{color:hightLightColor}">Inline</div>
+            <div v-bind:style="{color:hightLightColor,'font-size': headerSize + 'px'}">Inline</div>
         </div>
 
     </div>
@@ -31,7 +31,7 @@
             sirName:"<i>Nara</i >",
             myId:"dataId",
             hightLightColor:"Orange",
-            headerSize:50
+            headerSize:150
         }
     });
     </script>
