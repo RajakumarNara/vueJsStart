@@ -7,6 +7,61 @@
     </head>
     <body>
         <div id="my-app">
+            <input v-model.trim="query" placeholder="search...."/> <div>Searchig for: {{query}}</div>
+            <input v-model.number="placeholderNumber" placeholder="2+3"/> <div>Number for: {{placeholderNumber}}</div>
+            <input v-model.lazy="query" placeholder="search...."/> <div>lazy binding: {{query}}</div>
+            <input type="checkbox" v-model="isPowerSyntaxEnabled"/>
+            <small>Selected: {{isPowerSyntaxEnabled}}</small>
+            <br/>
+            <label>
+                <input type="checkbox" value="beers"
+                v-model="searchIndexes"/> Beers
+            </label>
+            <label>
+                    <input type="checkbox" value="breweries"
+                    v-model="searchIndexes"/> breweries
+                </label>
+                <small>
+                    Selected: {{searchIndexes}}
+                </small>
+            <br/>
+            <br/>
+            <label>
+                <input type="radio" value="beers"
+                v-model="radioTest"/> Beers
+            </label>
+            <label>
+                    <input type="radio" value="breweries"
+                    v-model="radioTest"/> breweries
+                </label>
+                <small>
+                    Selected: {{radioTest}}
+                </small>
+            <br/>
+            <br/>
+            Make single choice
+            <select v-model="singleSelect">
+                <option value="beers">Beers</option>
+                <option value="breweries">breweries</option>
+                <option value="distilleries">Distilleries</option>
+                <option value="pubs">Pubs</option>
+            </select>
+            <small>
+                selected: {{singleSelect}}
+            </small>
+            <br/>
+            <br/>
+            Make multiple choice
+            <select v-model="multipleSelect" multiple>
+                <option value="beers">Beers</option>
+                <option value="breweries">breweries</option>
+                <option value="distilleries">Distilleries</option>
+                <option value="pubs">Pubs</option>
+            </select>
+            <small>
+                selected: {{multipleSelect}}
+            </small>
+            <br/>
             <h1>{{vish}} {{name}}</h1>
             <h1 v-text="sirName">Raj</h1>
             <h1 v-html="sirName">1234</h1>
@@ -31,7 +86,14 @@
             sirName:"<i>Nara</i >",
             myId:"dataId",
             hightLightColor:"Orange",
-            headerSize:150
+            headerSize:150,
+            query:'',
+            isPowerSyntaxEnabled:true,
+            searchIndexes:[],
+            radioTest:'beers',
+            singleSelect:'beers',
+            multipleSelect:['beers','pubs'],
+            placeholderNumber:''
         }
     });
     </script>
