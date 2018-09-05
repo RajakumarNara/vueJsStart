@@ -7,12 +7,20 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
-
+import appService from '../app.service.js'
 export default {
   name: 'app',
   components: {
     HelloWorld,
   },
+  methods:{
+    loadPosts(){
+      appService.getPosts().then
+      (data =>{
+        this.posts=data
+      })
+    }
+  }
 };
 </script>
 
