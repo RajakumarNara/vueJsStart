@@ -1,0 +1,44 @@
+<!-- @@Using input bindings@@
+    When are we are to collect data, need to create 2 way binding.
+2 way binding can be created using "v-model" directive. 
+This directive can be used with input text, textarea text, select text, checkboxes, radio button, dropdown list -->
+
+<!-- @@ Binding to text field @@
+In html, text field is usually created using, one of 2 tags; 1. input 2. textarea text
+In vue, we can bind text fiels using v-mode directive.
+        Textual input types supported:color, date, datetime-local, email, month, number, password, range,
+    search, tell, text, time, url, week  
+        Text area used to collect multiline text input. Ex: Body of email is multi line.
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <input v-model="fullName" placeholder="Enter full name"/> <!--Change notification impact in UI.-->
+            <div>{{fullName}}</div>
+            <br/>
+            <input v-model="address" placeholder="Please enter address"/>
+            <div>{{address}}</div>
+            <br/>
+            <input v-model="mobileNumber" placeholder="Please enter mobile number"/>
+            <div>{{mobileNumber}}</div>
+            <br/>
+            <textarea v-model="emailBody" placeholder="Enter email details"></textarea>
+            <!--Vue does not support mustaches for binding a textarea-->
+            <div>{{emailBody}}</div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script type="text/javascript">
+        var v=new Vue({
+            el:"#app",
+            data:{
+                fullName:'',
+                address:'',
+                mobileNumber:'',
+                emailBody:''
+            }
+        })
+        </script>
+    </body>
+</html>
+

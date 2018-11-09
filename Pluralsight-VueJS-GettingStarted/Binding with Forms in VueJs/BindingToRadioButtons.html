@@ -1,0 +1,30 @@
+<!--HTML radio buttons used to choose one of several options
+v-mode directive once again used for binding.
+If I have more then one options in choice list then better go for dropdown list.
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <label>
+                <input type="radio" value="Home" v-model="whereAreyou"/>
+                Home
+            </label>
+            <label>
+                <input type="radio" value="Office" v-model="whereAreyou"/>
+                Office
+            </label>
+            <br/>
+            <small>Where are you? {{whereAreyou}}</small>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script type="text/javascript">
+         var v=new Vue({
+             el:"#app",
+             data:{
+                 whereAreyou:'Office'
+             }
+         })
+        </script>
+    </body>
+</html>

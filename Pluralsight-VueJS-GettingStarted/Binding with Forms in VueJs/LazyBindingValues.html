@@ -1,0 +1,29 @@
+<!-- We can synchonise the user input, whenever oninput event has fired. 
+As a general rule, anytime user presses a key, sychronise the user input with data model.
+Contineous update can be over kill, ex: in search criteria, if we search on every keyprss will be
+costly operation.
+ Need force search for 
+ "HTML OnChange" event - This event fires after input element has lost the focus.
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <input v-model.lazy="appName" placeholder="Enter application name"/>
+            <small>{{appName}}</small>
+            <hr/>
+            <input v-model.lazy.trim="name" placeholder="Enter application name"/>
+            <small>{{name}}</small>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script type="text/javascript">
+        var v= new Vue({
+            el:"#app",
+            data:{
+                appName:"",
+                name:""
+            }
+        });
+        </script>
+    </body>
+</html>

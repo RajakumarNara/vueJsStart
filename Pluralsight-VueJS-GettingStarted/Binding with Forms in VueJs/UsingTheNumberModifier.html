@@ -1,0 +1,25 @@
+<!--Number modifier automatically tries to cast user input to a number
+This modifier is helpful because html element always returns values as string.
+This modifier tries to get a number object for us.
+To use the number modifier, just add .number to the v-model directive.
+Uses the JS parseFloat function
+Number modifier, internally applies the trim modifire, no need to use trim along with .number modifier
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <input v-model.number="cal" placeholder="Enter number at beginning"/>
+            <small>{{cal}}</small>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script type="text/javascript">
+        var v= new Vue({
+            el:"#app",
+            data:{
+                cal:''
+            }
+        })
+        </script>
+    </body>
+</html>

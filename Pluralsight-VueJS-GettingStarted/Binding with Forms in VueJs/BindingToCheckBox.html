@@ -1,0 +1,39 @@
+<!--@@Binding to checkboxes @@
+In html checkbox, Lets user pick one value or another.
+There are 2 situations using checkboxes, should be consider
+1. Choose a single value. Like yes/ No  -> To bind just use v-model directive.
+2. User choose multiple choices by creating checkbox list.
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <input type="checkbox" v-model="IsCorrect"  />
+            <div >{{IsCorrect}}</div>
+            <!--Multiple choice-->
+            <label> Multiple choices </label>
+            <br/>
+            <label>
+            <input type="checkbox" value="1" v-model="searchIndex"/> Is One?
+            </label>
+            <label>
+                <input type="checkbox" value="2" v-model="searchIndex"/> Is two?                
+            </label>
+            <br/>
+            <small>Multiple choice result: {{searchIndex}}</small>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script type="text/javascript">
+        var v= new Vue(
+            {
+                el:"#app",
+                data:{
+                    IsCorrect:true,
+                    searchIndex:[] //Mulltiple choices
+                }
+            }
+        );
+        </script>
+    </body>
+</html>

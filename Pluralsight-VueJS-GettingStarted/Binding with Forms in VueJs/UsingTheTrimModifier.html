@@ -1,0 +1,37 @@
+<!-- @@ Modifying bound values @@ 
+By default Vue synchronizes value input by the user with the data property.
+Whenever input event is fired.
+Input event will trigger, whenever html input or select element collect user input.
+This occures after the keypess html dom element but before keyup event.
+Once the input event has fired, the value input by the user may go through one of several modificaton.
+Out of the box, vue provides 2 modifiers for development load:
+ 1. Trim string value as input by the user
+ 2. Automatically convert input values to numbers -->
+
+ <!-- @@@Using the Trim modifiers @@@
+Trim modifiers 
+1. automatically removes the white space, while input
+2. Removes both leading and trailing white spaces
+3. This includes spaces, tabs and line breaks.
+     To includ the trim directive, add .trim to v-model directive.
+     Trim uses the JS trim method.
+     After trim, it will assign values to the data property.
+--> 
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <input v-model.trim="appName" placeholder="Enter the application name"/>
+            <small>Application name:{{appName}}</small>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script type="text/javascript">
+         var v=new Vue({
+             el:"#app",
+             data:{
+                 appName:""
+             }
+         })
+        </script>
+    </body>
+</html>

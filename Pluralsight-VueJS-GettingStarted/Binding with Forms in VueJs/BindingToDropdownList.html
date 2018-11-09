@@ -1,0 +1,39 @@
+<!--Dropdown list in the html can be created with select element. This element is useful for 2 main scenario:
+1. Select list can be used, if someone make single choice -> Use v-model directive
+2. In some situatinos, someone make multiple choices.
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            Where are you? <br/>
+            <select v-model="whereAreyou">
+                <option value="Home">Home</option>
+                <option value="Office">Office</option>
+                <option value="Hotel">Hotel</option>
+                <option value="Bus">Bus</option>
+            </select>
+            <small> Where are you? {{whereAreyou}}</small>
+            <hr/>
+            <!--Multiple choices in the dropdown-->
+            Which technology do you know    ? <br/>
+            <select v-model="whichTechnologyDoYouKnow" multiple>
+                <option value="c#">c#</option>
+                <option value="HTML">HTML</option>
+                <option value="java">java</option>
+                <option value="JS">JS</option>
+            </select>
+            <small> Which technology do you know ? {{whichTechnologyDoYouKnow}}</small>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script>
+        var v=new Vue({
+            el:"#app",
+            data:{
+                whereAreyou:'Home', //Home has selected by default.
+                whichTechnologyDoYouKnow:['C#','HTML']
+            }
+        });
+        </script>
+    </body>
+</html>
