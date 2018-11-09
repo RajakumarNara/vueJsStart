@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id="ToBindVue">
+            <h4>{{appName}}</h4>
+           <img alt="Personal accounting tracking" v-bind:src="appLogo"/> 
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script>
+        var v=new Vue({
+            el:'#ToBindVue',
+            data:{
+                appName:'Personal time tracking',
+                appLogo:'D://Locker//Personal//Photos//rajakumarBLUE.jpg'
+            }
+        });
+        </script>
+    </body>
+</html>
