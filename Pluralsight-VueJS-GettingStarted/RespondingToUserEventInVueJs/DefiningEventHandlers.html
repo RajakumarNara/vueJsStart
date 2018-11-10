@@ -1,0 +1,47 @@
+<!--Collecting data is important part of any web applicaton.
+In many web application, it is important to respond user interaction.
+These interactions also know as events.
+1. Listen for user initiated events
+2. How to modify events-->
+
+<!-- @@ Using Event Handlers @@
+As user interact with an app, expect certain things to happen, 
+Ex: If I click on serch button, search action to run. To meet an expection, first attach to event.
+"v-on" directive empower me to attach to an event.
+"v-on" dirctive listen for an events in HTML DOM.
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <input v-model="search" placeholder="enter search value"/>
+            <small>{{search}}</small>
+            <br/>
+            <button v-on:click="Executesearch">Search</button>
+            <!--"v-on" directive attached to a click event.
+            Technically, this is any DOM event, supported by the hosting DOM element.
+        In this case we are using click event.
+    In normal html, we use OnClick event, here ignore the "on" prefix that you might be used in html.
+when on click trigger, some custom JS can be ran, when search button has clicked, 
+That JS is "Executesearch"-->
+
+<!--"Executesearch" is the JS function name. This function must be define vue scrope. For this setup the 
+methods option. Similar to data ob-->
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script>
+            var v=new Vue({
+                el:"#app",
+                data:{  //Similar to data object, declare methods object added.Separated both by comma.
+                    search:"" //search property.
+                },
+                methods:{
+                    Executesearch:function(){ // Executesearch function has defined using JS object mtd syntax.
+                        //This reason, they call it as object mtd instead of function.
+                        alert(this.search);// In mtd, this keyword automatically bound to Vue instance.
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

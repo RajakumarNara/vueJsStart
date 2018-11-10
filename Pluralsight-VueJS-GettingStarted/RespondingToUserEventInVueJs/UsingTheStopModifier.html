@@ -1,0 +1,52 @@
+<!--Stop modifier used to ceases event propagation.
+This modifier serves as a convinient "hook to JS stopPropagation method.
+ -->
+ <html>
+    <head></head>
+    <body>
+        <div id="app">
+            <input v-model="search" placeholder="enter search value"/>
+            <small>{{search}}</small>
+
+            <div v-on:click="GrandParentClick">
+                <div v-on:click="ParentClick">                       
+                        <button type="submit" v-on:click.stop="Executesearch">Search</button>
+                        <!--stop midifier allows only "Executesearch" method to run-->
+                </div>
+           </div> 
+           <hr/>
+           <div v-on:click="GrandParentClick">
+                <div v-on:click.stop="ParentClick">                       
+                        <button type="submit" v-on:click="Executesearch">Search</button>
+                        <!--stop midifier moved to parent to run but "GrandParentClick" not run-->
+                </div>
+           </div> 
+
+        </div>
+            <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+            <script>
+                var v=new Vue({
+                    el:"#app",
+                    data:{  //Similar to data object, declare methods object added.Separated both by comma.
+                        search:"" //search property.
+                    },
+                    methods:{
+                        Executesearch:function(){ 
+                            if(this.search){
+                            alert(this.search);
+                            }
+                            else{
+                                alert('Please enter search string');
+                            }
+                        },
+                        GrandParentClick:function(){
+                            alert('GrandParentClick');
+                        },
+                        ParentClick:function(){
+                            alert('ParentClick');
+                        }
+                    }
+                })
+            </script>
+        </body>
+        </html>

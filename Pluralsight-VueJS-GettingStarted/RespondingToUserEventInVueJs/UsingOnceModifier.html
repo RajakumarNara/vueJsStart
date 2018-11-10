@@ -1,0 +1,52 @@
+<!--Once modifier used, if I run an event one, and only one time.
+If this modifier is applied and event has triggered, the same event won't trigger by that element again
+This is because once modifier removes the event handler after the event is fired.
+This can be used, if server is responsible for data validation, even in that case though, still should
+update the UI, to prevent the user from submitting a form twice.
+Ex: Lets disable the search button and search field after user click on search-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <form action="" method="POST">
+                    <input v-model="search" type="search" v-bind:disabled="isRunning" placeholder="enter search value"/>
+                    <small>{{search}}</small>
+                    <button v-on:click.once="Executesearch" v-bind:disabled="isRunning">Search</button>                                                       
+            </form>
+            <br/>
+            <form action="" method="POST">
+                    <input v-model="search1" type="search" v-bind:disabled="isRunning1" placeholder="enter search value"/>
+                    <small>{{search}}</small>
+                    <div v-on:click="ParentClick">
+                      <button v-on:click.once="Executesearch1" v-bind:disabled="isRunning1">Search</button>                                                       
+                    </div>
+            </form>
+        </div>
+            <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+            <script>
+                var v=new Vue({
+                    el:"#app",
+                    data:{  //Similar to data object, declare methods object added.Separated both by comma.
+                        search:"",
+                        search1:"", //search property.
+                        isRunning1:false
+                    },
+                    methods:{
+                        Executesearch:function(){ 
+                            this.isRunning=true;
+                            alert('Hi');
+                           document.forms[0].submit();
+                        },
+                        Executesearch1:function(){ 
+                           
+                            alert('Search clicked');
+                           
+                        },
+                        ParentClick:function(){
+                            alert('Parent clicked');
+                        }
+                    }
+                })
+            </script>
+        </body>
+        </html>

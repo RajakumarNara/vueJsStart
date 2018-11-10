@@ -1,0 +1,52 @@
+<!--Self modifier, let me declare an element should "trigger event only if the element is originator.
+This means, this modifier only concerned with one element ie target.
+If self modifier is apply to the search button.
+Ignores the event propagatin for simplification -->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <input v-model="search" placeholder="enter search value"/>
+            <small>{{search}}</small>
+            <div v-on:click="GrandParentClick">
+                <div v-on:click="ParentClick">                       
+                        <button type="submit" v-on:click.self="Executesearch">Search</button>
+                        <!--Now propages through all 3. -->
+                </div>
+           </div>        
+           <hr/>
+           <div v-on:click.self="GrandParentClick">
+                <div v-on:click.self="ParentClick">                       
+                        <button type="submit" v-on:click="Executesearch">Search</button>
+                        <!--If move self modifier to parent and click on search button, now
+                        only executeserch mtd and grant parnt mtd run-->
+                </div>
+           </div>     
+        </div>
+            <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+            <script>
+                var v=new Vue({
+                    el:"#app",
+                    data:{  //Similar to data object, declare methods object added.Separated both by comma.
+                        search:"" //search property.
+                    },
+                    methods:{
+                        Executesearch:function(){ 
+                            if(this.search){
+                            alert(this.search);
+                            }
+                            else{
+                                alert('Please enter search string');
+                            }
+                        },
+                        GrandParentClick:function(){
+                            alert('GrandParentClick');
+                        },
+                        ParentClick:function(){
+                            alert('ParentClick');
+                        }
+                    }
+                })
+            </script>
+        </body>
+        </html>

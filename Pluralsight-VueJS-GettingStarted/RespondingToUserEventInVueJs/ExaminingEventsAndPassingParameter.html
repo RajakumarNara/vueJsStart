@@ -1,0 +1,44 @@
+<!--If You need to examine the event that has triggered, you include optional event parameter-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <input v-model="search" placeholder="enter search value"/>
+            <small>{{search}}</small>
+            
+            <br/>
+            <button v-on:click="Executesearch">Search</button>
+            <br/>
+            <input v-model="search1" placeholder="enter search value"/>
+            <button v-on:click="Executesearch1('token',$event)">Search</button>
+            <!---$event variable is reserved variable in vue. Give access to the HTML DOM event.-->
+            <!--"v-on" click also has short hand syntax (@click)-->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script>
+    var v=new Vue({
+        el:"#app",
+        data:{  //Similar to data object, declare methods object added.Separated both by comma.
+            search:"", //search property.
+            search1:""
+        },
+        methods:{
+            Executesearch:function(event){ // Executesearch function has defined using JS object mtd syntax.
+                //This reason, they call it as object mtd instead of function.
+                alert('Search text:'+this.search+'   Button: ' + event.target.innerText);// In mtd, this keyword automatically bound to Vue instance.
+                //alert first shows search text, second showing the text of the button that was clicked. This text 
+                // retrived through the event parameter.
+                // event parameter we name it anything.
+                // Note: The last parameter in the event handler is the Event object that triggered the event.
+            },
+                //Question: How do we pass other parameter to mtd. 
+                //To pass parameter to the mtd, need to use inline JS statement.
+                //This means,I have to expand event handler reference v-on directive
+                Executesearch1:function(t,e){
+                    alert('Search text:'+this.search+ '  token:'+t+'   Button: ' + e.target.innerText);
+            }
+        }
+    })
+</script>
+</body>
+</html>

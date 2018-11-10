@@ -1,0 +1,19 @@
+<!--Vue let you create, key modifiers used for key code.
+They are used less often.
+This can be useful, if app  needs to support for specific shortcut keys
+EX: Nice to show information about the app, if user press F1. To handle the user pressing F1,
+first have to define modifiers.
+I can define key modifiers in Vue by using globally visible config property.
+This property exposes vue configuration details like keycode.
+To define a keymodifier keyvalue pair of keycode
+
+Vue.config.keyCodes ={
+    f1:112  //f1 used as a modifier and 112 is keycode property.
+};
+
+To use a custom key modifier, use name of the property (f1) 
+<div id="" v-on:keyup.f1="AppInfo">...</div> 
+-->
+
+
+<!--Questinos: Where to create config file? -->

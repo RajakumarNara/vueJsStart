@@ -1,0 +1,38 @@
+<!--Event handler respond to key is pressed by user.
+Enter key-Submits a form by default.
+Vue provide 9 modifiers to handle common key event -->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <form v-on:submit.prevent action="" method="GET"></form>
+            <input v-model="search" type="search"
+             v-on:keyup="evaluateKey" v-on:keyup.enter="Executesearch" placeholder="enter search value"/>
+            <small>{{search}}</small>
+
+            <button v-on:click="Executesearch">Search</button>
+        </div>
+            <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+            <script>
+                var v=new Vue({
+                    el:"#app",
+                    data:{  //Similar to data object, declare methods object added.Separated both by comma.
+                        search:"" //search property.
+                    },
+                    methods:{
+                        Executesearch:function(){ 
+                            if(this.search){
+                            alert(this.search);
+                            }
+                            else{
+                                alert('Please enter search string');
+                            }
+                        },
+                        evaluateKey:function(e){
+                            alert(e.evaluateKey);
+                        }
+                    }
+                })
+            </script>
+        </body>
+        </html>

@@ -1,0 +1,58 @@
+<!-- @@ Altering events @@
+   As application grows in size, it becomes more complex. This complexity emergy as a html
+    element nest with one another. This nesting can be side effect, I may not thought about.
+   Proactively identify and address the side effect. To do this:
+   1. Explanation about Event propagation: 
+   2. React to keyboard and mouse events
+   3. How to consider special keys
+-->
+<!------------------------------------------------------------------------------------------------------->
+<!-- @@ Understanding Event Propagation @@
+When events has invoked, they can start change reaction. This can happen because by default events in html
+DOM are propagated through visual tree.
+EX: Imagine that search button, Sample sinppet for event propagation.
+-->
+<div v-on:click="GrandParentClick">
+    <div v-on:click="ParentClick">
+        <button v-on:click="executeSearch">Search</button>
+    </div>
+</div>
+<!--Event can bubble up or they can get captured.
+        When an event bubbles, the element that was selected, invokes the event first.
+        Context of the search button example, Search button first, event bubble up to the ancister element.
+        Each ancister respond to the click event, if they wanted to.
+        This is the default approch used by Vue.    
+    There is a way to event capturing, if 
+-->
+<!------------------------------------------------------------------------------------------------------>
+<!-- @@ Event Capturing @@ 
+Event capturing should be used, if I want event to be handled, oppsit word of event bubbling.
+Event handling starts at the window object. 
+The order downs through visual tree. All the way down of the target.
+Bubble up - capture down.
+
+Event capturing was introduced by Nestely, in early days of the web.
+Microsoft introduces the bubbling up. Which is the default approach today.
+W3C supported both the approach.
+Since Vue complements web technology so well, it naturally supports both bubbling and event capturing.
+In vue, event capturing applied on an element via "capture modifier". "Capture modifier" - choose like
+other modifier. Simply append dot after name of the event and apply the name of the modifier.
+If Capture modifier has applied to the search button code, shown earlier, it look like   
+
+      Propagates event from the top to bottom. Event handler are executed from top to bottom.
+      1st: GrandParentClick
+      2nd: ParentClick
+      3rd: executeSearch
+-->
+<div v-on:click.capture="GrandParentClick">   <!---1st-->
+        <div v-on:click.capture="ParentClick"> <!---2nd-->
+            <button v-on:click.capture="executeSearch">Search</button> <!---3rd-->
+        </div>
+    </div>
+<!--Mixing propagatin types-->
+    <div v-on:click.capture="GrandParentClick">   <!---1st-->
+        <div v-on:click="ParentClick"> <!---3rd-->
+            <button v-on:click="executeSearch">Search</button> <!---2nd-->
+        </div>
+    </div>
+<!----------------------------------------------------------------------------------------------------->

@@ -1,0 +1,57 @@
+<!--Some time mouse specific action are important, like keyboard event
+Vue provides 3 modifiers; left, middle and right.
+These 3 modifiers, can be used with mouse related events to respond accordingly.
+Specifically, all these 3 modifiers work with mouse down and mouse up events.
+However, beyond the mouse up and mouse up events, these 3 modifiers provide limited support for
+mouse related events for that reason, I like to discuss left, middle and right modifiers more closely.
+
+Left modifier: Empower you to respond to a user interacting with the left mouse button.
+Ex: Imagine there is area on web page, I want to react to the user clicking on 
+
+Middle mouse modifier: Helps to respond to the user interacting with middle mouse button.
+This modifier is rarely used. There are only 2 mouse related event support onmuse down and up
+
+Right modifier: Helps to respond to user interacting with right mouse button. It doesnot work with
+click evetn. contextmenu event works only with right button
+
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <div v-on:mousedown.left="onBlockClicked">
+                Click on this area with the left mouse button.
+            </div>
+            <div v-on:click.left="onBlockClicked"> <!--This is more familier-->
+                    Click on this area with the left mouse button.
+                </div>
+                <div v-on:click="onBlockClicked"> <!--This is more cleaner becuse click event fires 
+                only click on left mouse button-->
+                    Click on this area with the left mouse button.
+                </div>
+                <div v-on:mousedown.middle="onBlockClicked">
+                        Click on this area with the middle mouse button.
+                    </div>
+                <div v-on:mousedown.right="onBlockClicked">
+                        Click on this area with the right mouse button.
+                    </div>
+                <div v-on:contextmenu.prevent="onBlockClicked">
+                    <!--Without pervent modifier, the browser default contextmenu will appear, by 
+                    adding the prevent modifier, vue by passes the default behaviour ie browser
+                context menu won't appear-->
+                        Click on this area with the right mouse button.
+                    </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script>
+        var v=new Vue({
+            el:"#app",
+            methods:{
+                onBlockClicked:function(){
+                    alert('Ji');
+                }
+            }
+        })
+        </script>
+    </body>
+</html>

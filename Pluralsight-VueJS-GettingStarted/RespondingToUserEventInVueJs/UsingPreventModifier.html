@@ -1,0 +1,49 @@
+<!--  @@  Using the prevent modifier
+Prevent modifire let bypasses default event behavior of an element.
+This modifier serves as representation of Javascript's preventDefault method. 
+
+In this example, added the 
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+                <input v-model="search" placeholder="enter search value"/>
+                <small>{{search}}</small>
+                <br/>
+                <button type="submit" v-on:click.prevent="Executesearch">Search</button>
+                <!--html submit button, default behavior of html submit button is to submit form data
+                to the server. This call round trip to server and back to the user.
+            This causes the page to reload. Lot of cases this is fine.
+        What if, user did not enter a search query? If user did not enter the search query, we are
+    doing the round trip to server with no good reason, this reload the page, takeup few more computing
+cycle on server.
+          To improve the search experience, we have to validate the data as much as we can on client side
+        before sending it to the webserver.
+          To do that use the prevent modifier
+        
+          Pervent modifier, prevents the default event behaviour.
+        -->
+        </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        var v=new Vue({
+            el:"#app",
+            data:{  //Similar to data object, declare methods object added.Separated both by comma.
+                search:"" //search property.
+            },
+            methods:{
+                Executesearch:function(){ 
+                    if(this.search){
+                    alert(this.search);
+                    }
+                    else{
+                        alert('Please enter search string');
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
