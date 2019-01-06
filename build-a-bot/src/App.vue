@@ -22,24 +22,24 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
-<<<<<<< HEAD
+//<<<<<<< HEAD
 import appService from '../app.service.js'
-=======
+//=======
 import appService from './app.service.js';
->>>>>>> 60d56cffc52dfbe5f8003948a924c169131fb3ce
+///>>>>>>> 60d56cffc52dfbe5f8003948a924c169131fb3ce
 export default {
   name: 'app',
   components: {
     HelloWorld,
   },
-<<<<<<< HEAD
+///<<<<<<< HEAD
   methods:{
     loadPosts(){
       appService.getPosts().then
       (data =>{
         this.posts=data
       })
-=======
+///=======
   data(){
     return{
       posts:[]
@@ -53,7 +53,7 @@ export default {
       })
       
       alert(posts);
->>>>>>> 60d56cffc52dfbe5f8003948a924c169131fb3ce
+///>>>>>>> 60d56cffc52dfbe5f8003948a924c169131fb3ce
     }
   }
 };
